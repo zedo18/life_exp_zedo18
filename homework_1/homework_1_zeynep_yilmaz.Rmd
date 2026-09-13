@@ -1,0 +1,12 @@
+---
+title: "Homework 1"
+author: "Zeynep Yilmaz "
+
+---
+Q1) Calculate the arithmetic means.
+```{r}
+scores <- c(72,85,91,68,84)
+mean.scores <- mean(scores)
+mean.scores
+```
+
