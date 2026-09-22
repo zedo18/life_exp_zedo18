@@ -1,5 +1,5 @@
 ---
-title: "Assignment 2"
+title: "DATA413_Homework_2_Yilmaz"
 format:
   html:
     embed-resources: true
@@ -28,10 +28,11 @@ Complete the following exercises **using only the tidyverse packages** (e.g., `d
 
 # Question:
 
-- Task 1: Read data using a relative path
-To read the data we need read.csv from tidyverse which we are installing in the console and seeing it with the library.
+- Task 1: Read data using a relative path .
 
-``` {r}
+  To read the data we need read_csv from tidyverse which we are installing in the console and seeing it with the library.
+
+```{r}
 
 
 library(tidyverse)
@@ -40,24 +41,26 @@ college_data
 
 ```
 
-- Task 2:Determine rows and columns
-Using glimpse to see the nuber of rows, colums and much more about them. There are 7175 rows and 12 colums.
+- Task 2:Determine rows and columns.
+
+  Using glimpse to see the number of rows, columns and much more about them. There are 7175 rows and 12 columns.
+
 ```{r}
 glimpse(college_data)
 ```
 
+- Task 3: Use tidyverse to select INSTNM, SAT_AVG, and ADM_RATE.
 
+  We use select(data, objects) from tidyverse to select columns.
 
-
-- Task 3: Use tidyverse to select INSTNM, SAT_AVG, and ADM_RATE
-We use select(data, objects) from tidyverse to select columns.
 ```{r}
 select(college_data, INSTNM, SAT_AVG, ADM_RATE)
 ```
 
+- Task 4: Create a scatterplot for SAT_AVG and ADM_RATE (Remove NA).
 
-- Task 4: Create a scatterplot for SAT_AVG and ADM_RATE (Remove NA)
-We will use ggplot with geom.point to creat a scatter plot between SAT_AVG and ADM_RATE.
+  We will use ggplot with geom_point to creat a scatter plot between SAT_AVG and ADM_RATE.
+
 ```{r}
 ggplot(college_data, aes(y = ADM_RATE, x = SAT_AVG)) +
   geom_point(na.rm = TRUE)
