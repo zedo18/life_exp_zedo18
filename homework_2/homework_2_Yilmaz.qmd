@@ -57,6 +57,15 @@ select(college_data, INSTNM, SAT_AVG, ADM_RATE)
 
 
 - Task 4: Create a scatterplot for SAT_AVG and ADM_RATE (Remove NA)
+We will use ggplot with geom.point to creat a scatter plot between SAT_AVG and ADM_RATE.
+```{r}
+ggplot(college_data, aes(y = ADM_RATE, x = SAT_AVG)) +
+  geom_point(na.rm = TRUE)
+  
+    
+    
+
+```
 
 ## Submission
 
