@@ -35,12 +35,16 @@ To read the data we need read.csv from tidyverse which we are installing in the 
 
 
 library(tidyverse)
-college_data <- read_csv("../Desktop/DATA413/data/collegedata.csv")
+college_data <- read_csv ("../data/collegedata.csv") #read.csv would have been base R
 college_data
 
 ```
 
 - Task 2:Determine rows and columns
+Using glimpse to see the nuber of rows, colums and much more about them. There are 7175 rows and 12 colums.
+```{r}
+glimpse(college_data)
+```
 
 
 
