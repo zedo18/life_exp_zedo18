@@ -29,11 +29,11 @@ Complete the following exercises **using only the tidyverse packages** (e.g., `d
 # Question:
 
 - Task 1: Read data using a relative path
-To read the data we need read.csv from tidyverse which we are installing
+To read the data we need read.csv from tidyverse which we are installing in the console and seeing it with the library.
 
 ``` {r}
 
-install.packages("tidyverse")
+
 library(tidyverse)
 college_data <- read_csv("../Desktop/DATA413/data/collegedata.csv")
 college_data
@@ -41,10 +41,8 @@ college_data
 ```
 
 - Task 2:Determine rows and columns
-We use glimpse to get the number of rows and columns and other information on rows and columns.
-```{r}
-glimpse(college_data)
-```
+
+
 
 
 - Task 3: Use tidyverse to select INSTNM, SAT_AVG, and ADM_RATE
