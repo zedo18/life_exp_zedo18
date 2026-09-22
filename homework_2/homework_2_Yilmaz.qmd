@@ -50,6 +50,10 @@ glimpse(college_data)
 
 
 - Task 3: Use tidyverse to select INSTNM, SAT_AVG, and ADM_RATE
+We use select(data, objects) from tidyverse to select columns.
+```{r}
+select(college_data, INSTNM, SAT_AVG, ADM_RATE)
+```
 
 
 - Task 4: Create a scatterplot for SAT_AVG and ADM_RATE (Remove NA)
