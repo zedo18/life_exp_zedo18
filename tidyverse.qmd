@@ -97,6 +97,14 @@ Write a function that uses a for loop that, for each iteration, randomly draws 5
 ## 2_a:
 
 - Repeat part 1 by using a `map_*()` function.
+Using map_dbl since we want one decimal numeric mean for each iteration.
+1:10000 is the for loop using map.
+Using rexp() to choose 5 random observations with rate = 1.
+
+```{r}
+means <- map_dbl(1:10000, ~ mean(rexp(5, rate = 1)))
+means
+```
 
 ## 2_b:
 
