@@ -109,7 +109,12 @@ means
 ## 2_b:
 
 - Repeat part 1 by using the `replicate()` function.
+Replicate iretates 10000 times so we didn't need 1: and ~ since it gives back a list but we don't need a list for replicate.
 
+```{r}
+means_2 <- replicate(10000, mean(rexp(5, rate = 1)))
+means_2
+```
 ## 2_c:
 
 - Use a another for loop that will print out plots for sample sizes of 5, 10, and 20 observations (instead of just 5).
