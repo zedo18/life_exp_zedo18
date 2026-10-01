@@ -44,6 +44,7 @@ tribble( ~x,    ~y,    ~w,    ~z,
 ## 1_a:
 
 - Use and show a `map` function to find the "mean" of each column of the `dt` data table
+Using mean inside map.
 
 ```{r}
 map(dt,mean)
@@ -52,6 +53,7 @@ map(dt,mean)
 ## 1_b:
 
 - Use and show a `map` function to find the "standard deviation" of each column of the `dt` data table.
+Using sd in map.
 
 ```{r}
 map(dt,sd)
@@ -60,6 +62,11 @@ map(dt,sd)
 ## 1_c:
 
 - Use and show a map function that will calculate the "square root" of each value of each column of the data table `dt`.
+Using sqrt inside map().
+
+```{r}
+map(dt,sqrt)
+```
 
 ## 1_d:
 
