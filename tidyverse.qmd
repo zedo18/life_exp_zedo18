@@ -119,6 +119,19 @@ means_2
 
 - Use a another for loop that will print out plots for sample sizes of 5, 10, and 20 observations (instead of just 5).
 
+Using replicate with a general for loop putting the random selection numbers of 5,10,20 with mean and rexp. Then creating a histogram with hist(calculation, titles).
+
+```{r}
+for (n in c(5, 10, 20)) {
+  
+  means <- replicate(10000, mean(rexp(n, rate = 1)))
+  
+  hist(means,
+       main = paste("Sample Size =", n),
+       xlab = "Sample Means")
+}
+```
+
 # Problem 3:
 
 - Use and show R coding to calculate the "standard deviation" for each variable of the data table `mtcars` using the “Special For Loop Method”.
