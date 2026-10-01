@@ -72,6 +72,10 @@ map(dt,sqrt)
 
 - Use R code to find the "mean", "max", "1st Quartile", "3rd Quartile", "Median", and "Min" for each column of the `dt` data table. (Hint: You do not have to use a map function)
 
+```{r}
+summary(dt)
+```
+
 # Problem 2:
 
 Write a function that uses a for loop that, for each iteration, randomly draws 5 observations from an exponential distribution with "rate" parameter 1 (use `rexp()`) and calculates its "mean". It should do this 10,000 times. Choose an appropriate plot to plot the distribution of "means".
