@@ -53,6 +53,10 @@ map(dt,mean)
 
 - Use and show a `map` function to find the "standard deviation" of each column of the `dt` data table.
 
+```{r}
+map(dt,sd)
+```
+
 ## 1_c:
 
 - Use and show a map function that will calculate the "square root" of each value of each column of the data table `dt`.
