@@ -205,8 +205,29 @@ date_data
 
 Given the following dates, compute the difference in **months** and **weeks** between each consecutive pair.
 
-``` r
+``` {r}
+library(lubridate) #for as.Date, interval, from to by.
+
 sample_dates <- c("2018-03-15", "2020-07-20", "2023-01-10", "2025-09-05")
+
+month_diff <- time_length(
+  interval(sample_dates[-length(sample_dates)], sample_dates[-1]), #reverse
+  "months"
+)
+
+week_diff <- time_length(
+  interval(sample_dates[-length(sample_dates)], sample_dates[-1]), 
+  "weeks"
+)
+# Put results into a data frame
+date_differences <- data.frame( #from reverse list to nromal list
+  from = sample_dates[-length(sample_dates)],
+  to = sample_dates[-1],
+  months = month_diff,
+  weeks = week_diff
+)
+
+date_differences
 ```
 
 # Problem 6
