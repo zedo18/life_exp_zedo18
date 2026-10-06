@@ -111,7 +111,8 @@ means
 - Repeat part 1 by using the `replicate()` function.
 Replicate iretates 10000 times so we didn't need 1: and ~ since it gives back a list but we don't need a list for replicate.
 
-```{r}
+```{r, echo= FALSE, include= FALSE}
+
 means_2 <- replicate(10000, mean(rexp(5, rate = 1)))
 means_2
 ```
@@ -238,17 +239,21 @@ Given a list of mixed date formats, use `map()` and `possibly()` from `purrr` to
 library(tidyverse)
 library (lubridate)
 
-date_strings <- list("2023-06-10", "2022/12/25", "15-Aug-2021", "InvalidDate")
-
-safe_date <- possibly( #possibly to not make the code crash by invaliddate
-  function(x) {
-    parse_date_time(x, orders = c("ymd", "dmy"))
-  },
+date_strings <- list(
+  "2023-06-10",
+  "2022/12/25",
+  "15-Aug-2021",
+  "InvalidDate"
+)
+ 
+safe_date <- possibly( #possibly to eliminate errors
+  ~ parse_date_time(.x, orders = c("ymd", "dmy"), quiet = TRUE),
   otherwise = NA
 )
 
-dates <- map(date_strings, safe_date) #converts date string into writing
+dates <- map(date_strings, safe_date) #changing date strings into date values
 
-month_names <- map(dates, ~ month(.x, label = TRUE)) #extracts the month from each date 
+month_names <- map(dates, ~ month(.x, label = TRUE)) #getting the month out of the date values
+
 month_names
 ```
