@@ -234,6 +234,21 @@ date_differences
 
 Given a list of mixed date formats, use `map()` and `possibly()` from `purrr` to safely convert them to **Date** format and extract the **month name**.
 
-``` r
+``` {r}
+library(tidyverse)
+library (lubridate)
+
 date_strings <- list("2023-06-10", "2022/12/25", "15-Aug-2021", "InvalidDate")
+
+safe_date <- possibly( #possibly to not make the code crash by invaliddate
+  function(x) {
+    parse_date_time(x, orders = c("ymd", "dmy"))
+  },
+  otherwise = NA
+)
+
+dates <- map(date_strings, safe_date) #converts date string into writing
+
+month_names <- map(dates, ~ month(.x, label = TRUE)) #extracts the month from each date 
+month_names
 ```
