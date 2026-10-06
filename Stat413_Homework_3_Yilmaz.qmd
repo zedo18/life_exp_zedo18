@@ -1,0 +1,218 @@
+---
+title: "Homework Tidyverse"
+subtitle: "Zeynep Yilmaz"
+format:
+  html:
+    embed-resources: true
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  eval = TRUE,
+  fig.height = 3,
+  fig.width = 6,
+  fig.align = "center"
+)
+
+ggplot2::theme_set(ggplot2::theme_bw())
+```
+
+```{r}
+#| message: false
+#| warning: false
+if(!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, gapminder, broom)
+```
+
+# Problem 1:
+
+Copy paste and run the tribble given below.
+
+```{r}
+tribble( ~x,    ~y,    ~w,    ~z,
+              210,   300,   220,   180,
+              102,   100,   119,   187,
+              176,   175,   188,   173,
+              87,    95,   91,     94,
+              202,   210,  234,    218,
+              110,   122,  131,    128,
+) -> dt
+```
+
+## 1_a:
+
+- Use and show a `map` function to find the "mean" of each column of the `dt` data table
+Using mean inside map.
+
+```{r}
+map(dt,mean)
+```
+
+## 1_b:
+
+- Use and show a `map` function to find the "standard deviation" of each column of the `dt` data table.
+Using sd in map.
+
+```{r}
+map(dt,sd)
+```
+
+## 1_c:
+
+- Use and show a map function that will calculate the "square root" of each value of each column of the data table `dt`.
+Using sqrt inside map().
+
+```{r}
+map(dt,sqrt)
+```
+
+## 1_d:
+
+- Use R code to find the "mean", "max", "1st Quartile", "3rd Quartile", "Median", and "Min" for each column of the `dt` data table. (Hint: You do not have to use a map function)
+
+```{r}
+summary(dt)
+```
+
+# Problem 2:
+
+Write a function that uses a for loop that, for each iteration, randomly draws 5 observations from an exponential distribution with "rate" parameter 1 (use `rexp()`) and calculates its "mean". It should do this 10,000 times. Choose an appropriate plot to plot the distribution of "means".
+
+- Solution: We want to fill a vector with values. We should create this vector beforehand using the `vector()` function.
+
+- We want to create a vector of size 10 and we want its values to be numeric.
+
+- Then we want to randomly draw 5 observations from an exponential distribution with "rate" parameter 1 (use `rexp(5, rate = 1)`) and calculates its "mean"
+
+- Now we want to create a vector that has length of 10 and its values are mean of this randomly selected exponential functions
+
+- Now we want to draw the histogram. But we need to have a data frame. Let us define a data frame.
+
+- Now we can draw a histogram
+
+  - **Now, let's solve the problem all in one step**
+
+## 2_a:
+
+- Repeat part 1 by using a `map_*()` function.
+Using map_dbl since we want one decimal numeric mean for each iteration.
+1:10000 is the for loop using map.
+Using rexp() to choose 5 random observations with rate = 1.
+
+```{r}
+means <- map_dbl(1:10000, ~ mean(rexp(5, rate = 1)))
+means
+```
+
+## 2_b:
+
+- Repeat part 1 by using the `replicate()` function.
+Replicate iretates 10000 times so we didn't need 1: and ~ since it gives back a list but we don't need a list for replicate.
+
+```{r}
+means_2 <- replicate(10000, mean(rexp(5, rate = 1)))
+means_2
+```
+## 2_c:
+
+- Use a another for loop that will print out plots for sample sizes of 5, 10, and 20 observations (instead of just 5).
+
+Using replicate with a general for loop putting the random selection numbers of 5,10,20 with mean and rexp. Then creating a histogram with hist(calculation, titles).
+
+```{r}
+for (n in c(5, 10, 20)) {
+  
+  means <- replicate(10000, mean(rexp(n, rate = 1)))
+  
+  hist(means,
+       main = paste("Sample Size =", n),
+       xlab = "Sample Means")
+}
+```
+
+# Problem 3:
+
+- Use and show R coding to calculate the "standard deviation" for each variable of the data table `mtcars` using the “Special For Loop Method”.
+
+**Note:**
+
+- There are two methods. Please see a quick explanation for both methods in below:
+
+  - Method 1:
+
+```{r}
+  multi_return <- function() {
+    my_list <- list("color" = "red", "size" = 20, "shape" = "round")
+    return(my_list) 
+  }
+multi_return()
+```
+
+```{r}
+a <- multi_return()
+a$color
+
+a<- multi_return()
+a$shape
+
+a<- multi_return()
+a$size
+```
+
+- Method 2. The "Special For Loop Method"
+
+```{r}
+#| eval: false
+output <- vector("double", ncol(mtcars))  # 1. output (use appropriate data frame instead of df)
+for (i in seq_along(mtcars)) {            # 2. sequence
+  output[[i]] <- median(mtcars[[i]])      # 3. body
+}
+output
+```
+
+- **Solution:** coding to calculate the "standard deviation" for each variable
+
+# Problem 4:
+
+Generate a sequence of dates from **January 1, 2015** to **December 31, 2025**, spaced by every **two months**. Extract the **year**, **quarter**, and **ISO week number** for each date.
+
+```{r}
+library(lubridate) #for date package
+
+dates <- seq( #sequencing the wanted
+  from = as.Date("2015-1-1"),
+  to = as.Date("2025-12-31"),
+  by = "2 months"
+)
+
+year <- year(dates) #identifying and extracting the values
+quarter <- quarter(dates)
+iso_week <- isoweek(dates)
+
+date_data <- data.frame( #making it into a dataframe
+  date = dates,
+  year = year(dates),
+  quarter = quarter(dates),
+  iso_week = isoweek(dates)
+)
+
+date_data
+```
+
+# Problem 5
+
+Given the following dates, compute the difference in **months** and **weeks** between each consecutive pair.
+
+``` r
+sample_dates <- c("2018-03-15", "2020-07-20", "2023-01-10", "2025-09-05")
+```
+
+# Problem 6
+
+Given a list of mixed date formats, use `map()` and `possibly()` from `purrr` to safely convert them to **Date** format and extract the **month name**.
+
+``` r
+date_strings <- list("2023-06-10", "2022/12/25", "15-Aug-2021", "InvalidDate")
+```
