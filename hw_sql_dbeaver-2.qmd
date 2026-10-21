@@ -180,17 +180,19 @@ Find the **number of flights** for each carrier.
   - carrier
   - number of flights Sort from the **largest to smallest**.
 
-![Part II(a): First 10 rows of flights](AnswerB.png)
+![Part II(b): First 10 rows of flights](AnswerB.png)
 
 
 
 #### c.
 
-Find the **average departure delayby month**
+Find the **average departure delay by month**
 
 - Your output should include:
   - month
   - average departure delay
+  
+![Part II(c): First 10 rows of flights](AnswerC.png)
 
 #### d.
 
