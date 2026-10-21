@@ -124,6 +124,8 @@ dbGetQuery(conn, "
   ORDER BY number_of_flights DESC
   LIMIT 5
 ")
+
+dbDisconnect(conn)
 ```
 
 
@@ -158,9 +160,7 @@ dbGetQuery(conn, "
 
 List the first **10 rows** of the `flights` table.
 
-``` r
-dbGetQuery(conn, "YOUR SQL HERE")
-```
+
 
 #### b.
 
