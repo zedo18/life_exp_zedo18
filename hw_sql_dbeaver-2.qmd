@@ -201,6 +201,9 @@ Find the **top 10 routes** (`dest`) by:
 - `origin`
 
 - `dest`
+Choosing origin and destination as table components, ordering the counts of the destination by decending order and limiting it to 10.
+
+![Part II(d): First 10 rows of flights](AnswerD.png)
 
 ordered by **number of flights**.
 
@@ -209,6 +212,11 @@ ordered by **number of flights**.
 Export the result of part b query to a **CSV file** using the **Export Data** feature in DBeaver.
 
 Submit the exported CSV file along with your homework.
+```{r}
+carrier_counts <- read.csv("carrier_counts.csv")
+carrier_counts
+```
+
 
 - **Exporting Data to CSV in DBeaver**
 
