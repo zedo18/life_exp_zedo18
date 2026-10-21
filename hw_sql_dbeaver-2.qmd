@@ -67,7 +67,7 @@ conn <- DBI::dbConnect(drv)
 dbListTables(conn)
 ```
 
-#### a This selects all columns (*) from flights and returns only the first 10 rows.
+#### a This selects all columns (*) from flights and returns only the first 10 rows. 
 ```{r}
 dbGetQuery(conn, "
   SELECT *
@@ -82,11 +82,18 @@ dbGetQuery(conn, "
 
 #### b.
 
-Find the **number of flights**
+Find the **number of flights**, counting all of the carriers and nameing it as number of flights.
 
-i.  in the dataset
+```{r}
+dbGetQuery(conn, "
+  SELECT carrier, COUNT(*) AS number_of_flights
+  FROM flights
+  GROUP BY carrier
+  ORDER BY number_of_flights DESC
+")
+```
 
-ii. for each carrier
+
 
 #### c.
 
