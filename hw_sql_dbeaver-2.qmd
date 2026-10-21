@@ -128,9 +128,7 @@ dbGetQuery(conn, "
 
 ```
 
-```{r}
-dbDisconnect(conn)
-```
+
 
 #### e.
 
@@ -153,7 +151,9 @@ dbGetQuery(conn, "
 
 ```
 
-
+```{r}
+dbDisconnect(conn)
+```
 
 
 > You must close the connection when you are done. Use `dbDisconnect()`
