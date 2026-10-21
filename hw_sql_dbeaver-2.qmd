@@ -113,6 +113,8 @@ Find the **top 5 destinations** (`dest`) With the most flights.
 - Your output should include:
   - destination
   - number of flights Sort from the **largest to smallest**.
+
+selecting destinationsa and recording the number of these flights as number_of_flights.
   
 ```{r}
 dbGetQuery(conn, "
@@ -133,7 +135,18 @@ Create a table showing:
 
 - average arrival delay (`arr_delay`)
 
-Sort the results from **largest to smallest delay**
+Sort the results from **largest to smallest delay** 
+Creating a table for 2 with carrier and average delay from flights grouping the delay by carriers and ordering the delay by descending.
+
+```{r}
+dbGetQuery(conn, "
+  SELECT carrier, AVG(arr_delay) AS average_arrival_delay
+  FROM flights
+  GROUP BY carrier
+  ORDER BY average_arrival_delay DESC
+")
+```
+
 
 > You must close the connection when you are done. Use `dbDisconnect()`
 
