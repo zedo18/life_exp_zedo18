@@ -97,7 +97,14 @@ dbGetQuery(conn, "
 
 #### c.
 
-Find the **average departure delay** (`dep_delay`)
+Find the **average departure delay** (`dep_delay`) Selecting the average of the departure delays and naming it as average_departure delay from flights.
+
+```{r}
+dbGetQuery(conn, "
+  SELECT AVG(dep_delay) AS average_departure_delay
+  FROM flights
+")
+```
 
 #### d.
 
@@ -106,6 +113,11 @@ Find the **top 5 destinations** (`dest`) With the most flights.
 - Your output should include:
   - destination
   - number of flights Sort from the **largest to smallest**.
+  
+```{r}
+
+```
+
 
 #### e.
 
