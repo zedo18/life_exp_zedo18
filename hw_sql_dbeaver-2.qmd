@@ -166,6 +166,8 @@ dbDisconnect(conn)
 
 List the first **10 rows** of the `flights` table.
 
+![Part II(a): First 10 rows of flights](AnswerA.png)
+
 
 
 #### b.
@@ -177,6 +179,10 @@ Find the **number of flights** for each carrier.
 - Your output should include:
   - carrier
   - number of flights Sort from the **largest to smallest**.
+
+![Part II(a): First 10 rows of flights](AnswerB.png)
+
+
 
 #### c.
 
