@@ -67,6 +67,16 @@ conn <- DBI::dbConnect(drv)
 dbListTables(conn)
 ```
 
+#### a This selects all columns (*) from flights and returns only the first 10 rows.
+```{r}
+dbGetQuery(conn, "
+  SELECT *
+  FROM flights
+  LIMIT 10
+")
+```
+
+
 
 
 
