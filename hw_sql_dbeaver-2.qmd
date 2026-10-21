@@ -125,9 +125,12 @@ dbGetQuery(conn, "
   LIMIT 5
 ")
 
-dbDisconnect(conn)
+
 ```
 
+```{r}
+dbDisconnect(conn)
+```
 
 #### e.
 
@@ -147,7 +150,10 @@ dbGetQuery(conn, "
   GROUP BY carrier
   ORDER BY average_arrival_delay DESC
 ")
+
 ```
+
+
 
 
 > You must close the connection when you are done. Use `dbDisconnect()`
